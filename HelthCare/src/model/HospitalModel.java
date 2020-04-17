@@ -12,10 +12,15 @@ public class HospitalModel {
 	public String hos_address;
 	public String hos_phone;
 	public String hos_email;
+	
+	
+	
 	public Integer getHos_id() {
+		System.out.println("Get h_id");
 		return hos_id;
 	}
 	public void setHos_id(Integer hos_id) {
+		System.out.println("Get s_id");
 		this.hos_id = hos_id;
 	}
 	public String getHos_name() {
