@@ -22,7 +22,7 @@ public class Doctor {
 	DoctorRepositry repo = new DoctorRepositry();
 	
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public List<DoctorM> getDoctors()
 	 {
 		System.out.println("Get Doctor..");
@@ -49,7 +49,7 @@ public class Doctor {
 	}
 	
 	@PUT
-	@Path("Doctor")
+	@Path("DoctorUpdate")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public DoctorM updateDoctor(DoctorM d1) {
 		System.out.println(d1);
