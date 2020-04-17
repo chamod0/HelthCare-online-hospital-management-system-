@@ -49,6 +49,7 @@ public class DoctorRepositry {
 				a.setEmail(rs.getString(6));
 				a.setPassword(rs.getString(7));
 				
+				
 				doctor.add(a);
 				
 			}
@@ -146,6 +147,51 @@ public class DoctorRepositry {
 		}
 		
 	}
+	public String getDoctorsTable() {
+		
+		
+		String output = "";
+		output = "<table border=\"1\"><tr><th>Doctor ID</th><th>Name</th><th>Tel No</th><th>Specialization</th><th>Hospital</th><th>Email</th><th>Password</th><th>Update</th><th>Remove</th></tr>"; 
+		 
+		String sql = "select * from doctor ";
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs =  st.executeQuery(sql);
+			while(rs.next()) {
+				
+				DoctorM a= new DoctorM();
+				
+				a.setId(rs.getInt(1));
+				a.setName(rs.getString(2));
+				a.setTel(rs.getInt(3));
+				a.setSpecialization(rs.getString(4));
+				a.setHosptal(rs.getString(5));
+				a.setEmail(rs.getString(6));
+				a.setPassword(rs.getString(7));
+				
+				// Add into the html table
+				 output += "<tr><td>" + rs.getInt(1) + "</td>";
+				 output += "<td>" + rs.getString(2) + "</td>";
+				 output += "<td>" + rs.getInt(3) + "</td>";
+				 output += "<td>" + rs.getString(4) + "</td>"; 
+				 output += "<td>" + rs.getString(5) + "</td>"; 
+				 output += "<td>" + rs.getString(6) + "</td>";
+				 output += "<td>" + rs.getString(7) + "</td>"; 
+				
+				 output +="<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"
+						 + "<td><form method=\"post\" action=\"items.jsp\">"
+						 + "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
+						 + "<input name=\"itemID\" type=\"hidden\" value=\"" + rs.getInt(1)
+						 + "\">" + "</form></td></tr>"; 
+			}
+			output += "</table>";
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return output ; 
+	}
+	
 	
 
 }

@@ -37,7 +37,15 @@ public class Doctor {
 		
 		return repo.getDoctor(id);
 	 } 
-	
+	@GET
+	@Path("DoctorTable")
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public String getDoctorTable()
+	 {
+		
+		System.out.println("Get Doctor Table..");
+		return repo.getDoctorsTable();
+	 }
 	@POST
 	@Path("DoctorReg")
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
