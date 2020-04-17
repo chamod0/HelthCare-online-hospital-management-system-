@@ -5,6 +5,7 @@ package com;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -21,7 +22,7 @@ public class Doctor {
 	DoctorRepositry repo = new DoctorRepositry();
 	
 	@GET
-	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<DoctorM> getDoctors()
 	 {
 		System.out.println("Get Doctor..");
@@ -38,8 +39,8 @@ public class Doctor {
 	 } 
 	
 	@POST
-	@Path("Doctor")
-	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Path("DoctorReg")
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	
 	public DoctorM createDoctor(DoctorM d1) {
 		System.out.println(d1);
@@ -57,6 +58,19 @@ public class Doctor {
 		}
 		repo.update(d1);
 		return d1;
+	}
+	
+	
+	@DELETE
+	@Path("Doctor/{id}")
+	public DoctorM deleteDoctor(@PathParam("id")int id) {
+		
+		
+		DoctorM a =repo.getDoctor(id);
+		
+		if(a.getId()!=0) 
+			repo.delete(id);
+		return a;
 	}
 	
 	
