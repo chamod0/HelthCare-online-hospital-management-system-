@@ -20,7 +20,7 @@ import model.DoctorM;
 public class Doctor {
 	
 	DoctorRepositry repo = new DoctorRepositry();
-	
+	@Path("/Dxml")
 	@GET
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public List<DoctorM> getDoctors()
@@ -30,7 +30,7 @@ public class Doctor {
 	 } 
 	
 	@GET
-	@Path("Doctor/{id}")
+	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public DoctorM getDoctor(@PathParam("id")int id)
 	 {
@@ -38,7 +38,7 @@ public class Doctor {
 		return repo.getDoctor(id);
 	 } 
 	@GET
-	@Path("DoctorTable")
+	@Path("/")
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public String getDoctorTable()
 	 {
@@ -47,7 +47,8 @@ public class Doctor {
 		return repo.getDoctorsTable();
 	 }
 	@POST
-	@Path("DoctorReg")
+	@Path("/")
+	
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	
 	public DoctorM createDoctor(DoctorM d1) {
@@ -57,8 +58,8 @@ public class Doctor {
 	}
 	
 	@PUT
-	@Path("DoctorUpdate")
-	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Path("/")
+	@Consumes({MediaType.TEXT_PLAIN,MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public DoctorM updateDoctor(DoctorM d1) {
 		System.out.println(d1);
 		if(repo.getDoctor(d1.getId()).getId()==0) {
@@ -70,7 +71,7 @@ public class Doctor {
 	
 	
 	@DELETE
-	@Path("Doctor/{id}")
+	@Path("/{id}")
 	public DoctorM deleteDoctor(@PathParam("id")int id) {
 		
 		
@@ -78,6 +79,7 @@ public class Doctor {
 		
 		if(a.getId()!=0) 
 			repo.delete(id);
+		System.out.println("Doctor delete");
 		return a;
 	}
 	

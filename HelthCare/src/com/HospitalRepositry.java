@@ -170,10 +170,9 @@ public void delete_Hospital(int hos_id) {
 	
 
 
-}
+
 
 
 }
 
 	
-}
