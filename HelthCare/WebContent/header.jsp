@@ -33,13 +33,13 @@
         <a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact Us</a>
+        <a class="nav-link" href="#"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
+        <a class="nav-link" href="#"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="#"></a>
       </li>
     </ul>
   </div>
