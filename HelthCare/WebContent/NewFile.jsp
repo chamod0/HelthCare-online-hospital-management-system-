@@ -41,20 +41,20 @@
                     <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
                         <div class="d-flex features-icons-icon"><i class="fas fa-user-alt m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
                         <h3>USER</h3>
-                    </div><a class="btn btn-primary ml-auto" role="button" href="#">Sign In</a>
+                    </div><a class="btn btn-primary ml-auto" role="button" href="#">Login</a>
                     <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
                 </div>
                 <div class="col-lg-4" data-aos="fade-down" style="background-color: #ffffff;">
                     <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
                         <div class="d-flex features-icons-icon"><i class="fas fa-user-nurse m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
-                        <h3>DOCTOR</h3><a class="btn btn-primary ml-auto" role="button" href="#">Sign In</a>
+                        <h3>DOCTOR</h3><a class="btn btn-primary ml-auto" role="button" href="#">Login</a>
                         <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
                     </div>
                 </div>
                 <div class="col-lg-4" data-aos="fade-left" style="background-color: #ffffff;">
                     <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
                         <div class="d-flex features-icons-icon"><i class="fas fa-hospital-alt m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
-                        <h3>HOSPITL</h3><a class="btn btn-primary ml-auto" role="button" href="#">Sign In</a>
+                        <h3>HOSPITL</h3><a class="btn btn-primary ml-auto" role="button" href="#">Login</a>
                         <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
                     </div>
                 </div>
