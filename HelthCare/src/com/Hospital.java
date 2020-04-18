@@ -25,7 +25,7 @@ public class Hospital {
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public List<HospitalModel> getHospitalModels()
 	 {
-		System.out.println("Get hospital..");
+		System.out.println("Get work & star list");
 		return repo.getHospitalModels();
 	 } 
 	
@@ -34,7 +34,7 @@ public class Hospital {
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public HospitalModel getHospitalModels(@PathParam("hos_id")int hos_id)
 	 {
-		
+		System.out.println("Get with selected Id");
 		return repo.getHospitalModel(hos_id);
 	 } 
 	
@@ -43,6 +43,8 @@ public class Hospital {
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	
 	public HospitalModel create_Hospital(HospitalModel h_create) {
+		
+		System.out.println("Set Path POST method");
 		System.out.println(h_create);
 		repo.create_Hospital(h_create);
 		return h_create;
@@ -52,6 +54,8 @@ public class Hospital {
 	@Path("hospital")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public HospitalModel update_Hospital(HospitalModel h_update) {
+		
+		System.out.println("Put started");
 		System.out.println(h_update);
 		if(repo.getHospitalModel(h_update.getHos_id()).getHos_id()==0) {
 			System.out.println("Inavlide ID");
