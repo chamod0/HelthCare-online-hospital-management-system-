@@ -14,7 +14,7 @@ public class Users {
 		 {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 //I used 3308 Port for SQL in Phpmyadmin
-			 con= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/users?useSSL=false", "paf", "");
+			 con= DriverManager.getConnection("jdbc:mysql://localhost/hms", "root", "");
 			 
 			 System.out.print("Successfully connected to the Database!");
 		 }

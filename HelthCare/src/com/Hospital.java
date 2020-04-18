@@ -2,9 +2,11 @@ package com;
 
 import java.util.List;
 
-
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -24,40 +26,54 @@ public class Hospital {
 	public List<HospitalModel> getHospitalModels()
 	 {
 		System.out.println("Get hospital..");
-		return repo.geHospitalModels();
+		return repo.getHospitalModels();
 	 } 
 	
 	@GET
-	@Path("hospital/{id}")
+	@Path("hospital/{hos_id}")
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public HospitalModel getHospitalModels(@PathParam("hos_id")int hos_id)
 	 {
 		
-		return repo.geHospitalModel(hos_id);
+		return repo.getHospitalModel(hos_id);
 	 } 
 	
-	/*@POST
-	@Path("Doctor")
+	@POST
+	@Path("hospital")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	
-	public DoctorM createDoctor(DoctorM d1) {
-		System.out.println(d1);
-		repo.create(d1);
-		return d1;
+	public HospitalModel create_Hospital(HospitalModel h_create) {
+		System.out.println(h_create);
+		repo.create_Hospital(h_create);
+		return h_create;
 	}
 	
 	@PUT
-	@Path("Doctor")
+	@Path("hospital")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-	public DoctorM updateDoctor(DoctorM d1) {
-		System.out.println(d1);
-		if(repo.getDoctor(d1.getId()).getId()==0) {
+	public HospitalModel update_Hospital(HospitalModel h_update) {
+		System.out.println(h_update);
+		if(repo.getHospitalModel(h_update.getHos_id()).getHos_id()==0) {
 			System.out.println("Inavlide ID");
 		}
-		repo.update(d1);
-		return d1;
-	}*/
+		repo.update_Hospital(h_update);
+		return h_update;
+	}
 	
+	
+	@DELETE
+	@Path("hospital/{hos_id}")
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public HospitalModel delete_Hospital(@PathParam("hos_id")int hos_id) {
+		
+		HospitalModel h = repo.getHospitalModel(hos_id);
+		if (h.getHos_id()!=0) {
+			repo.delete_Hospital(hos_id);
+		}
+		
+		return h;
+	
+	}
 	
 
 }
@@ -104,5 +120,3 @@ public class Hospital {
 //		return hospitalList;
 //		
 //	}
-//
-//}
