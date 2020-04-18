@@ -32,6 +32,7 @@ public class HospitalRepositry {
 		 }
 		 catch (Exception e) {
 		 	System.out.println(e);
+		 	System.out.println("Connection error");
 		 
 		 }
 		 
