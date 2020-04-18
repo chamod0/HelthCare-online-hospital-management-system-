@@ -151,7 +151,7 @@ public class DoctorRepositry {
 		
 		
 		String output = "";
-		output = "<table border=\"1\"><tr><th>Doctor ID</th><th>Name</th><th>Tel No</th><th>Specialization</th><th>Hospital</th><th>Email</th><th>Password</th><th>Update</th><th>Remove</th></tr>"; 
+		output = "<table border=\"1\"><tr><th>Doctor ID</th><th>Name</th><th>Tel No</th><th>Specialization</th><th>Hospital</th><th>Email</th><th>Password</th></tr>"; 
 		 
 		String sql = "select * from doctor ";
 		try {
@@ -178,11 +178,7 @@ public class DoctorRepositry {
 				 output += "<td>" + rs.getString(6) + "</td>";
 				 output += "<td>" + rs.getString(7) + "</td>"; 
 				
-				 output +="<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"
-						 + "<td><form method=\"post\" action=\"items.jsp\">"
-						 + "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
-						 + "<input name=\"itemID\" type=\"hidden\" value=\"" + rs.getInt(1)
-						 + "\">" + "</form></td></tr>"; 
+				 
 			}
 			output += "</table>";
 		} catch (Exception e) {

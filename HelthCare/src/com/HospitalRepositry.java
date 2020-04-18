@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import model.DoctorM;
 import model.HospitalModel;
 
 public class HospitalRepositry {
@@ -18,7 +18,7 @@ public class HospitalRepositry {
 	public  HospitalRepositry() {
 		String url = "jdbc:mysql://localhost/hms";
 		String username ="root";
-		String password = "root";
+		String password = "";
 		
 		System.out.println("Get con");
 		 try
@@ -163,6 +163,15 @@ public void delete_Hospital(int hos_id) {
 	} catch (Exception e) {
 		System.out.println(e);
 	}
+
+}
+
+	
+
+
+}
+
+
 }
 
 	
