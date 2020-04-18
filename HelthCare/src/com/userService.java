@@ -12,10 +12,11 @@ import org.jsoup.nodes.Document;
 @Path("/Users") 
 public class userService {
 	
+	//Creating an object of User class
 	Users users = new Users();
 	
 	
-	
+	//Read all Users
 	@GET
 	@Path("/")
 	@Produces({MediaType.APPLICATION_XML, MediaType.TEXT_HTML})
@@ -24,6 +25,7 @@ public class userService {
 		return users.readUser();
 	 }
 	
+	//creating a new record
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -35,21 +37,22 @@ public class userService {
 	 @FormParam("nic") String nic,
 	 @FormParam("phone") String phone,
 	 @FormParam("password") String password,
-	 @FormParam("confirmPass") String confirmPass)
-	{
-	 String output = users.insertUser(userID, fName, lName, nic, phone, password, confirmPass);
-	return output;
+	 @FormParam("confirmPass") String confirmPass){
+		 	String output = users.insertUser(userID, fName, lName, nic, phone, password, confirmPass);
+		
+		 	return output;
 	}
 	
+	//Updating an available record using ID
 	@PUT
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String updateItem(String userData)
 	{
-		//Convert the input string to a JSON object
+		
 		 JsonObject userObject = new JsonParser().parse(userData).getAsJsonObject();
-		//Read the values from the JSON object
+		
 		 String userID = userObject.get("userID").getAsString();
 		 String fName = userObject.get("fName").getAsString();
 		 String lName = userObject.get("lName").getAsString();
@@ -60,7 +63,8 @@ public class userService {
 		 String confirmPass = userObject.get("confirmPass").getAsString();
 		 
 		 String output = users.UpdateUser(userID, fName, lName, email, nic, phone, password, confirmPass);
-		return output;
+		
+		 return output;
 	}
 	
 	
@@ -70,13 +74,14 @@ public class userService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String deleteItem(String userData)
 	{
-	//Convert the input string to an XML document
-	 Document document = Jsoup.parse(userData, "", Parser.xmlParser());
-
-	//Read the value from the element <itemID>
-	 String userID = document.select("userID").text();
-	 String output = users.deleteUser(userID);
-	return output;
+	
+		 Document document = Jsoup.parse(userData, "", Parser.xmlParser());
+	
+		//Read the value from the element <itemID>
+		 String userID = document.select("userID").text();
+		 String output = users.deleteUser(userID);
+		
+		 return output;
 	}
 
 	
