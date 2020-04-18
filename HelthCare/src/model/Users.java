@@ -39,7 +39,7 @@ public class Users {
 						return "Error while connecting to the database";
 				}
 			 
-				 String query = " insert into user(fName,lName,email,nic, phone, password, confirmPass)" + " values (? ,?, ?, ?, ?, ?, ?)";
+				 String query = " INSERT INTO user(fName,lName,email,nic, phone, password, confirmPass)" + " values (? ,?, ?, ?, ?, ?, ?)";
 				 PreparedStatement preparedStmt = con.prepareStatement(query);
 				 // binding values
 				//preparedStmt.setInt(1, 0);
@@ -91,7 +91,7 @@ public class Users {
 					 //+ "<th>Update</th><th>Remove</th>"
 					 + "</tr>"; 
 			 
-			 String query = "select * from user";
+			 String query = "SELECT * FROM user";
 			 Statement stmt = con.createStatement();
 			 ResultSet rs = stmt.executeQuery(query); 
 			
@@ -143,7 +143,7 @@ public class Users {
 						return "Error while connecting to the database for deleting.";
 				}
 				// create a prepared statement
-				String query = "delete from user where userID=?";
+				String query = "DELETE FROM user WHERE userID=?";
 				PreparedStatement preparedStmt = con.prepareStatement(query);
 				// binding values
 				preparedStmt.setInt(1, Integer.parseInt(userID));
