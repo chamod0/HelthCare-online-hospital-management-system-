@@ -163,6 +163,10 @@ public void delete_Hospital(int hos_id) {
 	} catch (Exception e) {
 		System.out.println(e);
 	}
+
+}
+
+
 }
 
 	
