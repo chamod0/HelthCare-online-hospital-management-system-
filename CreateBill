@@ -113,8 +113,7 @@ h1 {
 
 
 			<div class="col-sm-10">
-				<button type="submit" data-toggle="modal"
-					data-target="#exampleModal" class="btn btn-primary">Create</button>
+				<button type="submit" class="btn btn-primary">Create</button>
 
 			</div>
 
