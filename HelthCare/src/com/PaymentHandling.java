@@ -26,11 +26,12 @@ public class PaymentHandling {
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String insertPayments(@FormParam("PayDate") String PayDate, 
+	public String insertPayments(
+			@FormParam("PayDate") String PayDate, 
 			@FormParam("CustomerName") String CustomerName,
 			@FormParam("Amount") String Amount, 
 			@FormParam("Description") String Description) {
-		String output = PaymentObj.insertPayment(PayDate, CustomerName, Amount, Description);
+		String output = PaymentObj.insertPayments(PayDate, CustomerName, Amount, Description);
 		return output;
 	}
 
@@ -47,7 +48,7 @@ public class PaymentHandling {
 		String CustomerName = PaymentObject.get("CustomerName").getAsString();
 		String Amount = PaymentObject.get("Amount").getAsString();
 		String Description = PaymentObject.get("Description").getAsString();
-		String output = PaymentObj.updatePayment(PaymentID, PayDate, CustomerName, Amount, Description);
+		String output = PaymentObj.updatePayments(PaymentID, PayDate, CustomerName, Amount, Description);
 		return output;
 	}
 	
@@ -62,7 +63,7 @@ public class PaymentHandling {
 
 	//Read the value from the element <itemID>
 	 String PaymentID = doc.select("PaymentID").text();
-	 String output = PaymentObj.deletePayment(PaymentID);
+	 String output = PaymentObj.deletePayments(PaymentID);
 	return output;
 	}
 
