@@ -11,7 +11,7 @@ import org.jsoup.*;
 import org.jsoup.parser.*;
 import org.jsoup.nodes.Document;
 
-@Path("/Payment")
+@Path("/payment")
 public class PaymentHandling {
 	Payment PaymentObj = new Payment();
 
@@ -39,15 +39,18 @@ public class PaymentHandling {
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String updatePayment(String itemData) {
+	public String updatePayments(String itemData) {
+		
 		// Convert the input string to a JSON object
-		JsonObject PaymentObject = new JsonParser().parse(itemData).getAsJsonObject();
+		JsonObject itemObject = new JsonParser().parse(itemData).getAsJsonObject();
+		
 		// Read the values from the JSON object
-		String PaymentID = PaymentObject.get("PaymentID").getAsString();
-		String PayDate = PaymentObject.get("PayDate").getAsString();
-		String CustomerName = PaymentObject.get("CustomerName").getAsString();
-		String Amount = PaymentObject.get("Amount").getAsString();
-		String Description = PaymentObject.get("Description").getAsString();
+		String PaymentID = itemObject.get("PaymentID").getAsString();
+		String PayDate = itemObject.get("PayDate").getAsString();
+		String CustomerName = itemObject.get("CustomerName").getAsString();
+		String Amount = itemObject.get("Amount").getAsString();
+		String Description = itemObject.get("Description").getAsString();
+		
 		String output = PaymentObj.updatePayments(PaymentID, PayDate, CustomerName, Amount, Description);
 		return output;
 	}
@@ -56,7 +59,7 @@ public class PaymentHandling {
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String deletePayment(String itemData)
+	public String deletePayments(String itemData)
 	{
 	//Convert the input string to an XML document
 	 Document doc = Jsoup.parse(itemData, "", Parser.xmlParser());
