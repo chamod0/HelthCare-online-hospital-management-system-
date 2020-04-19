@@ -10,6 +10,7 @@ public class DoctorRepositry {
 	
 	Connection con =null;
 	public  DoctorRepositry() {
+		//database Connection
 		String url = "jdbc:mysql://localhost/hms";
 		String username ="root";
 		String password = "";

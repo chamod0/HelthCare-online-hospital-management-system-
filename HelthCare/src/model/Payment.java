@@ -24,7 +24,7 @@ public class Payment { // A common method to connect to the DB
 				return "Error while connecting to the database for inserting.";
 			}
 			// create a prepared statement
-			String query = " insert into Payment (`PaymentID`, `PayDate`, `CustomerName`, `Amount`, `Description`)"
+			String query = " insert into payment (`PaymentID`, `PayDate`, `CustomerName`, `Amount`, `Description`)"
 					+ " values (?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
@@ -52,7 +52,7 @@ public class Payment { // A common method to connect to the DB
 				return "Error while connecting to the database for reading.";
 			}
 // Prepare the html table to be displayed
-			output = "<table border=\"1\"><tr><th>PayDate</th><th>CustomerName</th><th>Amount</th><th>Description</th><th>Update</th><th>Remove</th></tr>";
+			output = "<table border=\"1\"><tr><th>PayDate</th><th>CustomerName</th><th>Amount</th><th>Description</th></tr>";
 			String query = "select * from payment";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -70,11 +70,7 @@ public class Payment { // A common method to connect to the DB
 				output += "<td>" + Description + "</td>";
 
 // buttons
-				output += "<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"
-						+ "<td><form method=\"post\" action=\"payment.jsp\">"
-						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
-						+ "<input name=\"PaymentID\" type=\"hidden\" value=\"" + PaymentID + "\">"
-						+ "</form></td></tr>";
+				
 			}
 			con.close();
 // Complete the html table
@@ -95,7 +91,7 @@ public class Payment { // A common method to connect to the DB
 				return "Error while connecting to the database for updating.";
 			}
 // create a prepared statement
-			String query = "UPDATE Payment SET PayDate=?, CustomerName=?, Amount=?, Description=? WHERE PaymentID=?";
+			String query = "UPDATE payment SET PayDate=?, CustomerName=?, Amount=?, Description=? WHERE PaymentID=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 // binding values
 			preparedStmt.setString(1, PayDate);
@@ -123,7 +119,7 @@ public class Payment { // A common method to connect to the DB
 				return "Error while connecting to the database for deleting.";
 			}
 // create a prepared statement
-			String query = "delete from Payment where PaymentID=?";
+			String query = "delete from payment where PaymentID=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 // binding values
 			preparedStmt.setInt(1, Integer.parseInt(PaymentID));

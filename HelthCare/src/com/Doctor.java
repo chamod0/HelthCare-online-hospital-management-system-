@@ -18,7 +18,7 @@ import model.DoctorM;
 
 @Path("Doctor")
 public class Doctor {
-	
+	//Read all Doctor XML Format
 	DoctorRepositry repo = new DoctorRepositry();
 	@Path("/Dxml")
 	@GET
@@ -28,7 +28,7 @@ public class Doctor {
 		System.out.println("Get Doctor..");
 		return repo.getDoctors();
 	 } 
-	
+	//Read a Doctor using ID
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
@@ -37,6 +37,7 @@ public class Doctor {
 		
 		return repo.getDoctor(id);
 	 } 
+	//Read all Doctor in HTML Table
 	@GET
 	@Path("/")
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
@@ -46,41 +47,51 @@ public class Doctor {
 		System.out.println("Get Doctor Table..");
 		return repo.getDoctorsTable();
 	 }
+	
+	//creating a record for a doctor
 	@POST
 	@Path("/")
 	
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	
-	public DoctorM createDoctor(DoctorM d1) {
+	public String createDoctor(DoctorM d1) {
+		String output ="";
 		System.out.println(d1);
 		repo.create(d1);
-		return d1;
+		 output = "Inserted successfully";
+		
+		return output;
 	}
-	
+	//Updating an available record using ID
 	@PUT
 	@Path("/")
 	@Consumes({MediaType.TEXT_PLAIN,MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-	public DoctorM updateDoctor(DoctorM d1) {
+	public String updateDoctor(DoctorM d1) {
+		String output ="";
 		System.out.println(d1);
 		if(repo.getDoctor(d1.getId()).getId()==0) {
 			System.out.println("Inavlide ID");
 		}
 		repo.update(d1);
-		return d1;
+		 output = "Updated successfully";
+			
+			return output;
 	}
 	
-	
+	//Delete a recode
 	@DELETE
 	@Path("/{id}")
-	public DoctorM deleteDoctor(@PathParam("id")int id) {
+	public String deleteDoctor(@PathParam("id")int id) {
 		
-		
+		String output = "";
 		DoctorM a =repo.getDoctor(id);
 		
 		if(a.getId()!=0) 
 			repo.delete(id);
 		System.out.println("Doctor delete");
-		return a;
+		output = "Doctor Account deleted";
+		
+		return output;
 	}
 	
 	
