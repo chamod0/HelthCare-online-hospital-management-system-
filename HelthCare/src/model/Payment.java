@@ -9,7 +9,7 @@ public class Payment { // A common method to connect to the DB
 			Class.forName("com.mysql.jdbc.Driver");
 
 			// Provide the correct details: DBServer/DBName, username, password
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/hms", "root", "hasindu");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/hms", "root", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -14,7 +14,7 @@ import org.jsoup.*;
 import org.jsoup.parser.*;
 import org.jsoup.nodes.Document;
 
-@Path("/Items")
+@Path("/appointment")
 public class HealthCare {
 	Appointment itemObj = new Appointment();
 
@@ -29,16 +29,16 @@ public class HealthCare {
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String insertAppointment(@FormParam("item_Id") String itemCode,
+	public String insertAppointment(@FormParam("app_Id") String itemCode,
 									@FormParam("app_no") String app_no,
 									@FormParam("app_type") String app_type,
 	 								@FormParam("Doc_Id") String Doc_Id,
 	 								@FormParam("Doc_name") String Doc_name,
-	 								@FormParam("hospita_name") String hospital_name,
-	 								@FormParam("desc") String desc)
+	 								@FormParam("hospital_name") String hospital_name,
+	 								@FormParam("des") String des)
 
 	{
-					String output = itemObj.insertAppointment(app_no,app_type,Doc_Id,Doc_name,hospital_name,desc);
+					String output = itemObj.insertAppointment(app_no,app_type,Doc_Id,Doc_name,hospital_name,des);
 					return output;
 	}
 	
@@ -58,9 +58,9 @@ public class HealthCare {
 		String Doc_Id = itemObject.get("Doc_Id").getAsString();
 		String Doc_name = itemObject.get("Doc_name").getAsString();
 		String hospital_name = itemObject.get("hospital_name").getAsString();
-		String desc = itemObject.get("desc").getAsString();
+		String des = itemObject.get("des").getAsString();
 	 
-		String output = itemObj.updateAppointment(app_Id,app_no,app_type,Doc_Id,Doc_name,hospital_name,desc);
+		String output = itemObj.updateAppointment(app_Id,app_no,app_type,Doc_Id,Doc_name,hospital_name,des);
 	 
 		return output;
 	
