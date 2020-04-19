@@ -70,11 +70,13 @@ public class Doctor {
 		String output ="";
 		System.out.println(d1);
 		if(repo.getDoctor(d1.getId()).getId()==0) {
-			System.out.println("Inavlide ID");
-		}
+			
+			output = "Inavlide ID";
+		
+		}else {
 		repo.update(d1);
 		 output = "Updated successfully";
-			
+		}
 			return output;
 	}
 	
@@ -86,11 +88,14 @@ public class Doctor {
 		String output = "";
 		DoctorM a =repo.getDoctor(id);
 		
-		if(a.getId()!=0) 
+		if(a.getId()!=0) { 
+			
 			repo.delete(id);
 		System.out.println("Doctor delete");
 		output = "Doctor Account deleted";
-		
+		}else {
+			output = "Inavlide ID";
+		}
 		return output;
 	}
 	
