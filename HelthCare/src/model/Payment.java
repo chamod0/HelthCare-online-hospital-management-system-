@@ -36,9 +36,10 @@ public class Payment { // A common method to connect to the DB
 			//execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Inserted successfully";
+			String newPayment = readPayment();
+			output = "{\"status\":\"success\", \"data\": \"" + newPayment + "\"}";
 		} catch (Exception e) {
-			output = "Error while inserting the Payments.";
+			output =  "{\"status\":\"error\", \"data\": \"Error while inserting the Payments.\"}";
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -52,7 +53,7 @@ public class Payment { // A common method to connect to the DB
 				return "Error while connecting to the database for reading.";
 			}
 // Prepare the html table to be displayed
-			output = "<table border=\"1\"><tr><th>PayDate</th><th>CustomerName</th><th>Amount</th><th>Description</th></tr>";
+			output = "<table border=\"1\"><tr><th>PayDate</th><th>CustomerName</th><th>Amount</th><th>Description</th><th>Update</th><th>Remove</th></tr>";
 			String query = "select * from payment";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -64,12 +65,16 @@ public class Payment { // A common method to connect to the DB
 				String Amount = Double.toString(rs.getDouble("Amount"));
 				String Description = rs.getString("Description");
 // Add into the html table
-				output += "<tr><td>" + PayDate + "</td>";
+				output += "<tr><td><input id='hidPaymentIDupdate' name='hidPaymentIDupdate' type='hidden' value='"+ PaymentID +"'>" + PaymentID + "</td>";
+				output += "<td>" + PayDate + "</td>";
 				output += "<td>" + CustomerName + "</td>";
 				output += "<td>" + Amount + "</td>";
 				output += "<td>" + Description + "</td>";
 
 // buttons
+				output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
+						+ "<td><input name='btnRemove' type='button'value='Remove'class='btnRemove btn btn-danger' data-paymentid='"+ PaymentID + "'>" + "</td></tr>"; 
+				
 				
 			}
 			con.close();
@@ -103,9 +108,10 @@ public class Payment { // A common method to connect to the DB
 // execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Updated successfully";
+			String newPayment = readPayment();
+			output = "{\"status\":\"success\", \"data\": \"" +newPayment + "\"}"; 
 		} catch (Exception e) {
-			output = "Error while updating the Payment.";
+			output = "{\"status\":\"error\", \"data\": \"Error while updating the Payments.\"}"; 
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -126,11 +132,13 @@ public class Payment { // A common method to connect to the DB
 // execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Deleted successfully";
+			String newPayment = readPayment();
+			 output = "{\"status\":\"success\", \"data\": \"" +newPayment + "\"}"; 
 		} catch (Exception e) {
-			output = "Error while deleting the Payment.";
+			output =  "{\"status\":\"error\", \"data\": \"Error while deleting the payment.\"}";
 			System.err.println(e.getMessage());
 		}
 		return output;
 	}
 }
+
