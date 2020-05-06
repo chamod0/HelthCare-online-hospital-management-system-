@@ -4,10 +4,9 @@
 <html>
 <head>
 
-<link rel="Stylesheet" href="jquery.datetimepicker.min.css">
-
-<script src="calculate.js">
-</script>
+<link rel="Stylesheet" href="Views/bootstrap.min.css">
+<script src="Components/jquery-3.2.1.min.js"></script>
+<script src="Components/main.js"></script>
 
 <style>
 h1 {
@@ -21,7 +20,7 @@ h1 {
 </head>
 <body>
 
-	<h1 class="templatemo-site-header">HOSPITAL MANAGEMENT SYSTEM</h1>
+	<h1>HOSPITAL MANAGEMENT SYSTEM</h1>
 	
 
 	<h2>Create Bills</h2>
@@ -30,67 +29,60 @@ h1 {
 	<!--add form-->
 
 	<div class="addform">
-		<form name="CreateBill" onsubmit="return validateForm()" class="form-horizontal" action="BillServlet" method="post">
+		<form name="formBillinfo" id="formBillinfo" class="form-horizontal" action="BillInfo.jsp" method="post">
 			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Bill No :</label>
-					<input type="text" id="Bno" name="Bno" class="form-control" >
-			</div>
-
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Billing Date :</label>
-					<input type="text" id="date" name="date" class="form-control" >
-			</div>
-
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Hospital Chargers :</label>
-					<input type="text" id="HCid" name="HCid" class="form-control" >
-			</div>
-			
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Doctor Chargers :</label>
-					<input type="text" id="DCid" name="DCid" class="form-control" >
-			</div>
-			
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Other Chargers :</label>
-					<input type="text" id="OCid" name="OCid" class="form-control" >
+				<label class="control-label col-sm-2" for="pwd">Payment ID :</label>
+				<div class="col-sm-10">
+					<input type="text" id="PaymentID" name="PaymentID" class="form-control" >
 				</div>
-
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Total Bill :</label>
-					<input type="text" id="TBid" name="TBid" class="form-control" >
-				</div>
-
-<br>
-			<div class="form-group">
-				<input type="button" id="btncal" name="btncal" class="form-control" value ="calculate" onclick="calculate()">
-				
-<script type="text/javascript">
-	function calculate () {
-    var cost1 = document.getElementById ("HCid").value;
-    cost1 = parseFloat (cost1);
-    var cost2 = document.getElementById("DCid").value;
-    cost2 = parceFloat (cost2);
-    var cost3 = document.getElementById("OCid").value;
-    cost3 = parceFloat (cost3);
-    var totalcost = cost1 + cost2 + cost3;
-    alert('Total Cost is :' +totalcost);
-    document.getElementById("btncal").value = totalcost;
-}
-</script>
-				
 			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Date :</label>
+				<div class="col-sm-10">
+					<input type="text" id="PayDate" name="PayDate" class="form-control" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Customer Name :</label>
+				<div class="col-sm-10">
+					<input type="text" id="CustomerName" name="CustomerName" class="form-control" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Total Amount :</label>
+				<div class="col-sm-10">
+					<input type="text" id="Amount" name="Amount" class="form-control" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Description :</label>
+				<div class="col-sm-10">
+					<input type="text" id="Description" name="Description" class="form-control" >
+				</div>
+			</div>
+			
 <br>			
 			<div class="form-group">
-				<input type="button" id="btnsave" name="btnsave" class="form-control" value ="save">
+				<input type="button" id="btnSave" name="btnSave" class="btn btn-primary " value ="save">
+				<input type="hidden" id="hiddenPaymentIDsave" name="hiddenPaymentIDsave" value="">
 			</div>
-
-			
-		</form>
-	</div>
 	
-
+		</form>
+		
+<div id="alertSuccess" class="alert alert-success"></div>
+<div id="alertError" class="alert alert-danger"></div>
+<br>
+<div id="divPaymentGrid">
+ <%
+ Payment PaymentObj = new Payment();
+ out.print(PaymentObj.readPayment());
+ %>
+</div>
+		
+	</div>
 	
 
 </body>
