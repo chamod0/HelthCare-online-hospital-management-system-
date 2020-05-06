@@ -77,7 +77,7 @@ h1 {
 <br>
 <div id="divPaymentGrid">
  <%
- PaymentHandling PaymentObj = new PaymentHandling();
+ Payment PaymentObj = new Payment();
  out.print(PaymentObj.readPayment());
  %>
 </div>
